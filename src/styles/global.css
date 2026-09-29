@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+
+  ::selection {
+    background-color: #dcfce7;
+    color: #064e3b;
+  }
+}
+
+@layer components {
+  .btn-affiliate {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-brand-600 rounded-xl hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/25 active:scale-[0.98];
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-slate-300;
+  }
+
+  .badge-winner {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold tracking-wide uppercase rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300;
+  }
+
+  .badge-value {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold tracking-wide uppercase rounded-full bg-amber-100 text-amber-800 border border-amber-300;
+  }
+}

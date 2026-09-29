@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs items={[{ name: title, url: Astro.url.pathname }]} />
+    
+    <header class="my-6 border-b border-slate-200 pb-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{title}</h1>
+      <p class="text-sm text-slate-500 mt-2">Last updated: September 2026</p>
+    </header>
+
+    <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-a:text-emerald-600">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

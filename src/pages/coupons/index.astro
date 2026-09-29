@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import RevealCodeModal from '@/components/affiliate/RevealCodeModal.astro';
+import { getCollection } from 'astro:content';
+
+const coupons = await getCollection('coupons');
+---
+
+<BaseLayout
+  title="Verified Standing Desk & Office Furniture Coupons"
+  description="Exclusive promo codes and discount vouchers for FlexiSpot, Uplift, Secretlab, Branch, and more. Tested daily."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs items={[{ name: 'Coupons & Deals', url: '/coupons' }]} />
+
+    <header class="my-6 max-w-3xl space-y-3">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+        <span>Verified Savings</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Active Brand Promo Codes</h1>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+        Save money directly on the manufacturer's official store. Click any deal to reveal the code and launch checkout.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+      {coupons.map((c) => (
+        <RevealCodeModal
+          brandName={c.data.brand}
+          discount={c.data.discount}
+          code={c.data.code}
+          affiliateUrl={c.data.affiliateUrl}
+          description={c.data.description}
+          expiryDate={c.data.expiryDate}
+          verified={c.data.verified}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

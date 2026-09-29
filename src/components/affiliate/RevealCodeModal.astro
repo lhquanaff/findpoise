@@ -1,0 +1,149 @@
+---
+export interface Props {
+  brandName: string;
+  discount: string;
+  code: string;
+  affiliateUrl: string;
+  description: string;
+  expiryDate?: string;
+  verified?: boolean;
+}
+
+const {
+  brandName,
+  discount,
+  code,
+  affiliateUrl,
+  description,
+  expiryDate,
+  verified = true,
+} = Astro.props;
+
+const modalId = `modal-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<div class="relative rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="space-y-1.5">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wider bg-emerald-100 text-emerald-800 rounded-md">
+          {discount} OFF
+        </span>
+        {verified && (
+          <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Verified Today</span>
+          </span>
+        )}
+      </div>
+      <h4 class="text-base sm:text-lg font-bold text-slate-900">{description}</h4>
+      <p class="text-xs text-slate-500">Applicable on official {brandName} orders {expiryDate ? `• Expires ${expiryDate}` : ''}</p>
+    </div>
+
+    <!-- Trigger Button -->
+    <div class="shrink-0">
+      <button
+        type="button"
+        data-modal-target={modalId}
+        data-coupon-code={code}
+        data-affiliate-url={affiliateUrl}
+        class="reveal-code-btn inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-xl transition-all duration-200 shadow-sm active:scale-95 w-full sm:w-auto"
+      >
+        <span>Reveal Code</span>
+        <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-mono text-xs border border-slate-700">•••••</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Dialog -->
+  <dialog id={modalId} class="fixed inset-0 z-50 rounded-2xl p-0 backdrop:bg-slate-950/70 border border-slate-200 shadow-2xl max-w-md w-full mx-auto my-auto overflow-hidden">
+    <div class="p-6 text-center space-y-4 bg-white">
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-extrabold text-slate-900">Code Copied to Clipboard!</h3>
+        <p class="text-xs text-slate-500">Paste this promo code at checkout on {brandName}</p>
+      </div>
+
+      <!-- Code Box -->
+      <div class="flex items-center justify-between p-3.5 bg-slate-50 border-2 border-dashed border-emerald-500 rounded-xl">
+        <span class="font-mono text-xl font-extrabold text-emerald-700 tracking-wider select-all">{code}</span>
+        <button
+          type="button"
+          class="copy-again-btn text-xs font-semibold px-3 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+          data-copy={code}
+        >
+          Copy
+        </button>
+      </div>
+
+      <p class="text-[11px] text-slate-400">
+        We've opened the official {brandName} store in a new tab for you. If it didn't open, 
+        <a href={affiliateUrl} target="_blank" rel="nofollow noopener sponsored" class="text-emerald-600 underline font-semibold">click here</a>.
+      </p>
+
+      <div class="pt-2">
+        <button
+          type="button"
+          class="close-modal-btn w-full py-2.5 text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+        >
+          Close Window
+        </button>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  function setupRevealModals() {
+    const buttons = document.querySelectorAll('.reveal-code-btn');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-modal-target');
+        const code = btn.getAttribute('data-coupon-code');
+        const url = btn.getAttribute('data-affiliate-url');
+        const dialog = document.getElementById(modalId!) as HTMLDialogElement | null;
+
+        if (code) {
+          navigator.clipboard.writeText(code).catch(() => {});
+        }
+
+        if (url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        if (dialog) {
+          dialog.showModal();
+        }
+      });
+    });
+
+    document.querySelectorAll('.close-modal-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const dialog = (e.target as HTMLElement).closest('dialog');
+        if (dialog) dialog.close();
+      });
+    });
+
+    document.querySelectorAll('.copy-again-btn').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const code = target.getAttribute('data-copy');
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            target.textContent = 'Copied!';
+            setTimeout(() => (target.textContent = 'Copy'), 2000);
+          });
+        }
+      });
+    });
+  }
+
+  // Setup on page load and view transitions
+  setupRevealModals();
+  document.addEventListener('astro:page-load', setupRevealModals);
+</script>

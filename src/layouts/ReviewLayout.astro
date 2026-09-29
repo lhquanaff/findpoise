@@ -1,0 +1,170 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import AffiliateCTA from '@/components/affiliate/AffiliateCTA.astro';
+import ProsConsBox from '@/components/affiliate/ProsConsBox.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+
+export interface Props {
+  entry: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      productName: string;
+      brand: string;
+      category: string;
+      price: number;
+      rating: number;
+      publishDate: Date;
+      updatedDate?: Date;
+      author: string;
+      heroImage: string;
+      affiliateUrl: string;
+      retailer: string;
+      couponCode?: string;
+      discount?: string;
+      verdict: string;
+      pros: string[];
+      cons: string[];
+      specs?: Record<string, string>;
+    };
+  };
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+// Generate Schema.org Product + Review JSON-LD
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: data.productName,
+  brand: {
+    '@type': 'Brand',
+    name: data.brand,
+  },
+  offers: {
+    '@type': 'Offer',
+    price: data.price,
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: data.affiliateUrl,
+  },
+  review: {
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: data.rating,
+      bestRating: '5',
+      worstRating: '1',
+    },
+    author: {
+      '@type': 'Person',
+      name: data.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'FindPoise',
+      url: 'https://findpoise.com',
+    },
+    datePublished: data.publishDate.toISOString(),
+    reviewBody: data.verdict,
+  },
+};
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  articleType="article"
+  publishDate={data.publishDate}
+  updatedDate={data.updatedDate}
+  author={data.author}
+>
+  <JsonLd data={reviewSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Breadcrumbs -->
+    <Breadcrumbs
+      items={[
+        { name: 'Reviews', url: '/reviews' },
+        { name: data.productName, url: `/reviews/${entry.id}` },
+      ]}
+    />
+
+    <!-- Header Section -->
+    <header class="my-6 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold tracking-wide uppercase">
+        <span>Category: {data.category.replace('-', ' ')}</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        {data.title}
+      </h1>
+      <p class="text-lg text-slate-600 leading-relaxed">{data.description}</p>
+
+      <div class="flex items-center gap-4 text-xs text-slate-500 pt-2 border-t border-slate-200">
+        <span>By <strong class="text-slate-800">{data.author}</strong></span>
+        <span>•</span>
+        <time datetime={data.publishDate.toISOString()}>
+          Updated {data.updatedDate ? data.updatedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+        </time>
+      </div>
+    </header>
+
+    <!-- Top Affiliate CTA Box -->
+    <AffiliateCTA
+      productName={data.productName}
+      brand={data.brand}
+      price={data.price}
+      rating={data.rating}
+      affiliateUrl={data.affiliateUrl}
+      retailer={data.retailer}
+      couponCode={data.couponCode}
+      badge="Editor's Choice"
+    />
+
+    <!-- Quick Verdict Callout -->
+    <div class="p-6 rounded-2xl bg-slate-900 text-white my-8 shadow-sm">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-2">Our Quick Verdict</h3>
+      <p class="text-sm sm:text-base text-slate-200 leading-relaxed">{data.verdict}</p>
+    </div>
+
+    <!-- Pros & Cons Component -->
+    <ProsConsBox pros={data.pros} cons={data.cons} productName={data.productName} />
+
+    <!-- Technical Specs Table (if provided) -->
+    {data.specs && (
+      <div class="my-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 class="text-lg font-bold text-slate-900 mb-4">Technical Specifications</h3>
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
+          {Object.entries(data.specs).map(([key, val]) => (
+            <div class="flex justify-between py-2 border-b border-slate-100">
+              <dt class="font-medium text-slate-500">{key}</dt>
+              <dd class="font-semibold text-slate-900 text-right">{val}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    )}
+
+    <!-- Prose Content -->
+    <div class="prose prose-slate prose-lg max-w-none my-10 prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-emerald-600 prose-img:rounded-2xl">
+      <slot />
+    </div>
+
+    <!-- Bottom Affiliate CTA Box -->
+    <div class="mt-12 pt-8 border-t border-slate-200">
+      <AffiliateCTA
+        productName={data.productName}
+        brand={data.brand}
+        price={data.price}
+        rating={data.rating}
+        affiliateUrl={data.affiliateUrl}
+        retailer={data.retailer}
+        couponCode={data.couponCode}
+        badge="Best Deal Today"
+      />
+    </div>
+  </article>
+</BaseLayout>

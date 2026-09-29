@@ -1,0 +1,86 @@
+---
+export interface Props {
+  productName: string;
+  brand: string;
+  price: number;
+  originalPrice?: number;
+  rating: number;
+  affiliateUrl: string;
+  retailer?: string;
+  badge?: string;
+  couponCode?: string;
+}
+
+const {
+  productName,
+  brand,
+  price,
+  originalPrice,
+  rating,
+  affiliateUrl,
+  retailer = 'Official Store',
+  badge,
+  couponCode,
+} = Astro.props;
+
+const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating));
+---
+
+<div class="my-8 rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-50/40 via-white to-slate-50 p-6 sm:p-7 shadow-card">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+    <div class="space-y-2">
+      {badge && (
+        <span class="inline-block px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider bg-emerald-600 text-white rounded-md mb-1 shadow-sm">
+          {badge}
+        </span>
+      )}
+      <div class="text-xs uppercase font-bold tracking-wider text-slate-500">{brand}</div>
+      <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">{productName}</h3>
+      
+      <!-- Ratings -->
+      <div class="flex items-center gap-2">
+        <div class="flex text-amber-400 text-sm">
+          {stars.map((filled) => (
+            <span>{filled ? '★' : '☆'}</span>
+          ))}
+        </div>
+        <span class="text-xs font-bold text-slate-700">{rating.toFixed(1)} / 5.0</span>
+        <span class="text-slate-300">|</span>
+        <span class="text-xs text-slate-500">Editor Verified</span>
+      </div>
+
+      {couponCode && (
+        <div class="inline-flex items-center gap-2 mt-2 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-xs font-medium">
+          <span>🏷️ Promo Code:</span>
+          <code class="font-mono font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded">{couponCode}</code>
+        </div>
+      )}
+    </div>
+
+    <!-- Pricing & Button -->
+    <div class="flex flex-col sm:items-end justify-center gap-3 shrink-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-slate-200">
+      <div class="sm:text-right">
+        <div class="text-xs text-slate-500">Best available price</div>
+        <div class="flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-slate-900">${price.toFixed(2)}</span>
+          {originalPrice && (
+            <span class="text-sm text-slate-400 line-through">${originalPrice.toFixed(2)}</span>
+          )}
+        </div>
+      </div>
+
+      <a
+        href={affiliateUrl}
+        target="_blank"
+        rel="nofollow noopener sponsored"
+        class="btn-affiliate w-full sm:w-auto text-center group"
+      >
+        <span>Check Price on {retailer}</span>
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <span class="text-[11px] text-slate-600 sm:text-right">Ships directly from {retailer}</span>
+    </div>
+  </div>
+</div>

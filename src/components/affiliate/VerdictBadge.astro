@@ -1,0 +1,38 @@
+---
+export interface Props {
+  type?: 'winner' | 'value' | 'editor' | 'custom';
+  text?: string;
+}
+
+const { type = 'winner', text } = Astro.props;
+
+const config = {
+  winner: {
+    label: text || 'Overall Winner',
+    classes: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+    icon: '🏆',
+  },
+  value: {
+    label: text || 'Best Value Pick',
+    classes: 'bg-amber-100 text-amber-800 border-amber-300',
+    icon: '⭐',
+  },
+  editor: {
+    label: text || "Editor's Choice",
+    classes: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+    icon: '🎯',
+  },
+  custom: {
+    label: text || 'Top Rated',
+    classes: 'bg-slate-100 text-slate-800 border-slate-300',
+    icon: '✨',
+  }
+};
+
+const current = config[type] || config.winner;
+---
+
+<span class={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold tracking-wider uppercase rounded-full border shadow-sm ${current.classes}`}>
+  <span>{current.icon}</span>
+  <span>{current.label}</span>
+</span>

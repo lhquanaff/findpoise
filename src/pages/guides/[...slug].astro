@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  articleType="article"
+  publishDate={data.publishDate}
+  author={data.author}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs
+      items={[
+        { name: 'Guides', url: '/guides' },
+        { name: data.title, url: `/guides/${entry.id}` },
+      ]}
+    />
+
+    <header class="my-6 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold uppercase">
+        <span>{data.category}</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        {data.title}
+      </h1>
+      <p class="text-lg text-slate-600 leading-relaxed">{data.description}</p>
+      <div class="text-xs text-slate-400 pt-2 border-t border-slate-200">
+        By <strong class="text-slate-700">{data.author}</strong> • Published {data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+      </div>
+    </header>
+
+    <div class="prose prose-slate prose-lg max-w-none my-10 prose-headings:font-extrabold prose-a:text-emerald-600">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

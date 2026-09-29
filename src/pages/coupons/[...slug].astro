@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import RevealCodeModal from '@/components/affiliate/RevealCodeModal.astro';
+
+export async function getStaticPaths() {
+  const coupons = await getCollection('coupons');
+  return coupons.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { data } = entry;
+---
+
+<BaseLayout
+  title={`${data.brand} Promo Codes & Discount Vouchers (${data.discount})`}
+  description={data.description}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs
+      items={[
+        { name: 'Coupons', url: '/coupons' },
+        { name: `${data.brand} Discount`, url: `/coupons/${entry.id}` },
+      ]}
+    />
+
+    <header class="my-6 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase">
+        <span>Exclusive {data.discount} Discount</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        {data.title}
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">{data.description}</p>
+    </header>
+
+    <div class="my-8">
+      <RevealCodeModal
+        brandName={data.brand}
+        discount={data.discount}
+        code={data.code}
+        affiliateUrl={data.affiliateUrl}
+        description={data.description}
+        expiryDate={data.expiryDate}
+        verified={data.verified}
+      />
+    </div>
+
+    <div class="prose prose-slate prose-lg max-w-none my-10 prose-headings:font-bold prose-a:text-emerald-600">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

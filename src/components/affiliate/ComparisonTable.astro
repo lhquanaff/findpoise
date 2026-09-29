@@ -1,0 +1,92 @@
+---
+export interface ProductSpec {
+  name: string;
+  brand: string;
+  image: string;
+  price: number;
+  rating: number;
+  affiliateUrl: string;
+  badge?: string;
+  specs: Record<string, string>;
+}
+
+export interface Props {
+  productA: ProductSpec;
+  productB: ProductSpec;
+  criteriaKeys: string[];
+}
+
+const { productA, productB, criteriaKeys } = Astro.props;
+---
+
+<div class="my-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <!-- Head -->
+      <thead>
+        <tr class="border-b border-slate-200 bg-slate-50/70">
+          <th class="p-4 sm:p-5 text-xs font-bold uppercase tracking-wider text-slate-500 w-1/3">
+            Specifications & Features
+          </th>
+          <th class="p-4 sm:p-5 w-1/3 border-l border-slate-200 bg-white">
+            <div class="space-y-2">
+              {productA.badge && (
+                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-600 text-white rounded-md">
+                  {productA.badge}
+                </span>
+              )}
+              <div class="font-extrabold text-base sm:text-lg text-slate-900">{productA.name}</div>
+              <div class="text-xs font-semibold text-slate-500">{productA.brand}</div>
+              <div class="text-xl font-extrabold text-slate-900">${productA.price.toFixed(2)}</div>
+              <a
+                href={productA.affiliateUrl}
+                target="_blank"
+                rel="nofollow noopener sponsored"
+                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-lg transition-colors shadow-sm"
+              >
+                Check Price
+              </a>
+            </div>
+          </th>
+          <th class="p-4 sm:p-5 w-1/3 border-l border-slate-200 bg-white">
+            <div class="space-y-2">
+              {productB.badge && (
+                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-indigo-600 text-white rounded-md">
+                  {productB.badge}
+                </span>
+              )}
+              <div class="font-extrabold text-base sm:text-lg text-slate-900">{productB.name}</div>
+              <div class="text-xs font-semibold text-slate-500">{productB.brand}</div>
+              <div class="text-xl font-extrabold text-slate-900">${productB.price.toFixed(2)}</div>
+              <a
+                href={productB.affiliateUrl}
+                target="_blank"
+                rel="nofollow noopener sponsored"
+                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-lg transition-colors shadow-sm"
+              >
+                Check Price
+              </a>
+            </div>
+          </th>
+        </tr>
+      </thead>
+
+      <!-- Body -->
+      <tbody class="divide-y divide-slate-100 text-sm">
+        {criteriaKeys.map((key, idx) => (
+          <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
+            <td class="p-4 font-semibold text-slate-700 text-xs sm:text-sm">
+              {key}
+            </td>
+            <td class="p-4 border-l border-slate-100 text-slate-800 text-xs sm:text-sm">
+              {productA.specs[key] || '—'}
+            </td>
+            <td class="p-4 border-l border-slate-100 text-slate-800 text-xs sm:text-sm">
+              {productB.specs[key] || '—'}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
