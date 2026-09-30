@@ -1,0 +1,95 @@
+---
+export interface Props {
+  productName: string;
+  verdict: string;
+  rating: number;
+  benchmarks?: {
+    wobbleScoreAt45?: number;
+    noiseDecibels?: number;
+    realWorldPayloadLbs?: number;
+    assemblyTimeMinutes?: number;
+  };
+  affiliateUrl: string;
+}
+
+const { productName, verdict, rating, benchmarks, affiliateUrl } = Astro.props;
+---
+
+<aside
+  class="relative overflow-hidden rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-6 sm:p-7 text-white shadow-xl my-8"
+  aria-label={`FindPoise Quick Verdict for ${productName}`}
+  data-aeo-snippet="true"
+>
+  <!-- Accent glow badge -->
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-extrabold tracking-wider uppercase">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>FindPoise AI-Tested Verdict</span>
+    </div>
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 text-amber-300 font-extrabold text-sm">
+      <span>★ {rating.toFixed(1)} / 5.0</span>
+      <span class="text-[11px] text-slate-400 font-normal">Editor Score</span>
+    </div>
+  </div>
+
+  <!-- AEO Direct Answer Paragraph -->
+  <div class="space-y-3">
+    <h3 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+      Bottom Line for {productName}
+    </h3>
+    <p class="text-sm sm:text-base text-slate-200 leading-relaxed" data-summary-text="true">
+      {verdict}
+    </p>
+  </div>
+
+  <!-- Benchmark Micro-Metrics (GEO Citation Targets) -->
+  {benchmarks && (
+    <div class="mt-6 pt-5 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      {benchmarks.wobbleScoreAt45 !== undefined && (
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5">
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Stability at 45"</div>
+          <div class="text-lg font-black text-emerald-400 mt-0.5">{benchmarks.wobbleScoreAt45} / 10</div>
+          <div class="text-[10px] text-slate-400">Zero lateral sway</div>
+        </div>
+      )}
+
+      {benchmarks.noiseDecibels !== undefined && (
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5">
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Motor Noise</div>
+          <div class="text-lg font-black text-white mt-0.5">{benchmarks.noiseDecibels} dB</div>
+          <div class="text-[10px] text-slate-400">Whisper quiet</div>
+        </div>
+      )}
+
+      {benchmarks.realWorldPayloadLbs !== undefined && (
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5">
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Tested Payload</div>
+          <div class="text-lg font-black text-white mt-0.5">{benchmarks.realWorldPayloadLbs} lbs</div>
+          <div class="text-[10px] text-slate-400">Tested capacity</div>
+        </div>
+      )}
+
+      {benchmarks.assemblyTimeMinutes !== undefined && (
+        <div class="bg-white/5 rounded-xl p-3 border border-white/5">
+          <div class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Assembly Time</div>
+          <div class="text-lg font-black text-white mt-0.5">~{benchmarks.assemblyTimeMinutes} mins</div>
+          <div class="text-[10px] text-slate-400">1 person setup</div>
+        </div>
+      )}
+    </div>
+  )}
+
+  <!-- Footer link for compliance -->
+  <div class="mt-5 flex items-center justify-between text-[11px] text-slate-400">
+    <span>Data verified via FindPoise Ergonomics Test Matrix</span>
+    <a
+      href={affiliateUrl}
+      target="_blank"
+      rel="nofollow sponsored noopener"
+      class="text-emerald-400 hover:text-emerald-300 font-semibold underline inline-flex items-center gap-1"
+    >
+      <span>Check lowest verified price</span>
+      <span>→</span>
+    </a>
+  </div>
+</aside>

@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
 import AffiliateCTA from '@/components/affiliate/AffiliateCTA.astro';
 import ProsConsBox from '@/components/affiliate/ProsConsBox.astro';
+import QuickVerdictBox from '@/components/affiliate/QuickVerdictBox.astro';
+import RedditConsensusBox from '@/components/affiliate/RedditConsensusBox.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 
 export interface Props {
@@ -28,6 +30,18 @@ export interface Props {
       pros: string[];
       cons: string[];
       specs?: Record<string, string>;
+      benchmarks?: {
+        wobbleScoreAt45?: number;
+        noiseDecibels?: number;
+        realWorldPayloadLbs?: number;
+        assemblyTimeMinutes?: number;
+      };
+      redditSentiment?: {
+        consensus: string;
+        topComplaint: string;
+        communityThreadUrl?: string;
+        threadCountAnalyzed?: number;
+      };
     };
   };
 }
@@ -124,14 +138,28 @@ const reviewSchema = {
       badge="Editor's Choice"
     />
 
-    <!-- Quick Verdict Callout -->
-    <div class="p-6 rounded-2xl bg-slate-900 text-white my-8 shadow-sm">
-      <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-2">Our Quick Verdict</h3>
-      <p class="text-sm sm:text-base text-slate-200 leading-relaxed">{data.verdict}</p>
-    </div>
+    <!-- AEO / GEO Quick Verdict Callout -->
+    <QuickVerdictBox
+      productName={data.productName}
+      verdict={data.verdict}
+      rating={data.rating}
+      benchmarks={data.benchmarks}
+      affiliateUrl={data.affiliateUrl}
+    />
 
     <!-- Pros & Cons Component -->
     <ProsConsBox pros={data.pros} cons={data.cons} productName={data.productName} />
+
+    <!-- Reddit Community Consensus (E-E-A-T Friction & Fact-Check) -->
+    {data.redditSentiment && (
+      <RedditConsensusBox
+        productName={data.productName}
+        consensus={data.redditSentiment.consensus}
+        topComplaint={data.redditSentiment.topComplaint}
+        communityThreadUrl={data.redditSentiment.communityThreadUrl}
+        threadCountAnalyzed={data.redditSentiment.threadCountAnalyzed}
+      />
+    )}
 
     <!-- Technical Specs Table (if provided) -->
     {data.specs && (

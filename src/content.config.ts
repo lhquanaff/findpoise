@@ -23,6 +23,18 @@ const reviews = defineCollection({
     pros: z.array(z.string()),
     cons: z.array(z.string()),
     specs: z.record(z.string(), z.string()).optional(),
+    benchmarks: z.object({
+      wobbleScoreAt45: z.number().min(1).max(10).optional(),
+      noiseDecibels: z.number().optional(),
+      realWorldPayloadLbs: z.number().optional(),
+      assemblyTimeMinutes: z.number().optional(),
+    }).optional(),
+    redditSentiment: z.object({
+      consensus: z.string(),
+      topComplaint: z.string(),
+      communityThreadUrl: z.string().optional(),
+      threadCountAnalyzed: z.number().optional(),
+    }).optional(),
     featured: z.boolean().default(false),
   }),
 });
