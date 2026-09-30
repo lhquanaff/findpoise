@@ -8,7 +8,7 @@ const reviews = defineCollection({
     description: z.string(),
     productName: z.string(),
     brand: z.string(),
-    category: z.enum(['standing-desk', 'ergonomic-chair', 'monitor-arm', 'accessories']),
+    category: z.enum(['standing-desk', 'ergonomic-chair', 'monitor-arm', 'accessories', 'walking-pad']),
     price: z.number(),
     rating: z.number().min(1).max(5),
     publishDate: z.coerce.date(),
