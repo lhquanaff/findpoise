@@ -31,21 +31,29 @@ const { data } = entry;
       ]}
     />
 
-    <header class="my-6 space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold uppercase">
+    <header class="my-8 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300/80 text-xs font-bold tracking-wider uppercase shadow-subtle">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
         <span>{data.category}</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">
         {data.title}
       </h1>
-      <p class="text-lg text-slate-600 leading-relaxed">{data.description}</p>
-      <div class="text-xs text-slate-400 pt-2 border-t border-slate-200">
-        By <strong class="text-slate-700">{data.author}</strong> • Published {data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+      <p class="text-lg sm:text-xl text-slate-600 leading-relaxed font-normal">{data.description}</p>
+      
+      <div class="flex items-center gap-3 text-xs text-slate-500 pt-4 border-t border-slate-200/80">
+        <span class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-[10px]">FP</span>
+        <span>By <strong class="text-slate-900 font-semibold">{data.author}</strong></span>
+        <span>•</span>
+        <time datetime={data.publishDate.toISOString()} class="text-slate-600">
+          Published {data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+        </time>
       </div>
     </header>
 
-    <div class="prose prose-slate prose-lg max-w-none my-10 prose-headings:font-extrabold prose-a:text-emerald-600">
+    <div class="prose prose-slate prose-lg max-w-none my-12 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-slate-950 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-emerald-700 prose-a:font-semibold prose-a:underline hover:prose-a:text-emerald-800 prose-img:rounded-2xl prose-img:shadow-card">
       <Content />
     </div>
   </article>
 </BaseLayout>
+

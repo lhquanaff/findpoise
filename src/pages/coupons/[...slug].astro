@@ -29,17 +29,18 @@ const { data } = entry;
       ]}
     />
 
-    <header class="my-6 space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase">
+    <header class="my-8 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300/80 text-xs font-bold tracking-wider uppercase shadow-subtle">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
         <span>Exclusive {data.discount} Discount</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">
         {data.title}
       </h1>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">{data.description}</p>
+      <p class="text-base sm:text-xl text-slate-600 leading-relaxed font-normal">{data.description}</p>
     </header>
 
-    <div class="my-8">
+    <div class="my-10">
       <RevealCodeModal
         brandName={data.brand}
         discount={data.discount}
@@ -51,8 +52,9 @@ const { data } = entry;
       />
     </div>
 
-    <div class="prose prose-slate prose-lg max-w-none my-10 prose-headings:font-bold prose-a:text-emerald-600">
+    <div class="prose prose-slate prose-lg max-w-none my-12 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-slate-950 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-emerald-700 prose-a:font-semibold prose-a:underline hover:prose-a:text-emerald-800 prose-img:rounded-2xl">
       <Content />
     </div>
   </div>
 </BaseLayout>
+

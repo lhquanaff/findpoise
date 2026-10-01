@@ -2,71 +2,119 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-slate-950 text-slate-400 border-t border-slate-800">
+<footer class="bg-slate-950 text-slate-400 border-t border-slate-800/80">
+  <!-- Trust Strip -->
+  <div class="border-b border-slate-800/60 bg-slate-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left">
+        <div class="flex items-center gap-3 justify-center md:justify-start">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-slate-200">100% Unbiased Testing</div>
+            <div class="text-[11px] text-slate-500">Zero sponsored rankings</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center md:justify-start">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-slate-200">Hardware Stress Tested</div>
+            <div class="text-[11px] text-slate-500">Wobble, dB & weight limits</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center md:justify-start">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-slate-200">Reddit Sentiment Audit</div>
+            <div class="text-[11px] text-slate-500">Long-term user consensus</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 justify-center md:justify-start">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-slate-200">Verified Promo Codes</div>
+            <div class="text-[11px] text-slate-500">Direct savings at checkout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
       <!-- Col 1: Brand & Mission -->
       <div class="md:col-span-1 space-y-4">
-        <a href="/" class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 flex items-center justify-center">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M4 8h16M12 8v12M8 20h8"/>
             </svg>
           </div>
           <span class="font-display font-extrabold text-xl text-white tracking-tight">Find<span class="text-emerald-400">Poise</span></span>
         </a>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Independent, spec-driven reviews and head-to-head comparisons for modern workstations, standing desks, and ergonomic chairs.
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+          Independent, spec-driven reviews and head-to-head comparisons for modern workstations, standing desks, and ergonomic office gear.
         </p>
-        <p class="text-xs text-slate-400 font-medium">
+        <p class="text-xs text-slate-500 font-medium">
           Elevate your posture. Find your poise.
         </p>
       </div>
 
       <!-- Col 2: Categories -->
       <div>
-        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Categories</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Standing Desks</a></li>
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Ergonomic Chairs</a></li>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Core Directory</h4>
+        <ul class="space-y-2.5 text-xs sm:text-sm">
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Standing Desks & Reviews</a></li>
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Ergonomic Office Chairs</a></li>
           <li><a href="/compare" class="hover:text-emerald-400 transition-colors">Head-to-Head Comparisons</a></li>
-          <li><a href="/guides" class="hover:text-emerald-400 transition-colors">Workstation Health & Posture</a></li>
-          <li><a href="/guides" class="hover:text-emerald-400 transition-colors">Ergonomic Setup Guides</a></li>
+          <li><a href="/guides" class="hover:text-emerald-400 transition-colors">Biomechanics & Setup Guides</a></li>
+          <li><a href="/coupons" class="hover:text-emerald-400 transition-colors">Active Brand Discount Codes</a></li>
         </ul>
       </div>
 
       <!-- Col 3: Popular Brands -->
       <div>
-        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Top Brands</h4>
-        <ul class="space-y-2.5 text-sm">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Reviewed Brands</h4>
+        <ul class="space-y-2.5 text-xs sm:text-sm">
           <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">FlexiSpot Standing Desks</a></li>
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Uplift Desk Showdowns</a></li>
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Secretlab Titan & Magnus</a></li>
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Herman Miller Ergonomics</a></li>
-          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Branch Ergonomic Chairs</a></li>
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Uplift Desk V2 Showdowns</a></li>
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Secretlab Magnus & Titan</a></li>
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Herman Miller Aeron & Embody</a></li>
+          <li><a href="/reviews" class="hover:text-emerald-400 transition-colors">Steelcase Leap & Gesture</a></li>
         </ul>
       </div>
 
       <!-- Col 4: Legal & Trust -->
       <div>
-        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Editorial & Legal</h4>
-        <ul class="space-y-2.5 text-sm">
-          <li><a href="/affiliate-disclosure" class="hover:text-emerald-400 transition-colors">Affiliate Disclosure (FTC)</a></li>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Editorial & Trust</h4>
+        <ul class="space-y-2.5 text-xs sm:text-sm">
+          <li><a href="/affiliate-disclosure" class="hover:text-emerald-400 transition-colors">Affiliate Policy (FTC Compliant)</a></li>
           <li><a href="/privacy-policy" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="/contact" class="hover:text-emerald-400 transition-colors">Contact Editorial Team</a></li>
+          <li><a href="/guides/ergonomic-workstation-setup-checklist" class="hover:text-emerald-400 transition-colors">Workstation Setup Checklist</a></li>
         </ul>
       </div>
     </div>
 
     <!-- Mandatory FTC Affiliate Disclosure Notice -->
-    <div class="mt-12 pt-8 border-t border-slate-900 text-xs leading-relaxed text-slate-400 space-y-3">
+    <div class="mt-12 pt-8 border-t border-slate-900 text-xs leading-relaxed text-slate-500 space-y-3">
       <p>
-        <strong class="text-slate-300">Affiliate Disclosure:</strong> FindPoise is an independent review platform. We participate in various affiliate marketing programs (including Impact Radius, ShareASale, CJ, and Amazon Services LLC Associates Program). This means we may earn a small referral commission at no additional cost to you when you make a purchase through our links. Our evaluations are strictly based on objective technical specifications, community consensus (Reddit, tech forums), and hands-on ergonomic testing.
+        <strong class="text-slate-300 font-semibold">Affiliate Disclosure:</strong> FindPoise is an independent review publication. We participate in various affiliate marketing programs (including Impact.com, ShareASale, CJ, and the Amazon Services LLC Associates Program). When you purchase through our links, we may earn an affiliate referral commission at no additional cost to you. Our editorial evaluations are strictly governed by technical hardware specifications, motor stress benchmarks, and long-term community consensus (Reddit r/StandingDesk, r/OfficeChairs).
       </p>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-slate-900/60 text-slate-400">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-slate-900/80 text-slate-500">
         <p>&copy; {currentYear} FindPoise.com. All rights reserved.</p>
-        <p class="text-[11px]">Crafted for posture perfection & peak cognitive performance.</p>
+        <p class="text-[11px] text-slate-600">Built with 100% Static HTML for Zero-Carbon & Sub-Second Page Speed.</p>
       </div>
     </div>
   </div>
 </footer>
+

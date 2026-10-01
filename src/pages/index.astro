@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 const reviews = await getCollection('reviews');
 const comparisons = await getCollection('comparisons');
 const guides = await getCollection('guides');
+const coupons = await getCollection('coupons');
 ---
 
 <BaseLayout
@@ -12,128 +13,201 @@ const guides = await getCollection('guides');
   description="Data-driven, spec-tested reviews and head-to-head comparisons for standing desks, ergonomic office chairs, and modern workstation accessories."
 >
   <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-100 py-16 sm:py-24 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold tracking-wider uppercase shadow-sm">
-        <span>✨ 100% Spec-Driven & Community-Verified Testing</span>
+  <section class="relative overflow-hidden bg-gradient-to-b from-white via-[#fbfbfd] to-[#f4f5f8] py-16 sm:py-28 border-b border-slate-200/80">
+    <!-- Ambient background glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-emerald-100/30 via-teal-50/10 to-transparent blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8">
+      <!-- Eyebrow Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-300/80 text-xs font-extrabold tracking-wider uppercase shadow-subtle">
+        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+        <span>Independent Workstation Lab • US & UK Testing</span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight max-w-4xl mx-auto leading-[1.1]">
-        Elevate Your Posture. <br class="hidden sm:inline" />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-700">Find Your Poise.</span>
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-slate-950 tracking-[-0.03em] max-w-4xl mx-auto leading-[1.08]">
+        Elevate Your Workstation. <br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-700">Find Your Poise.</span>
       </h1>
 
-      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+      <!-- Value Proposition -->
+      <p class="text-base sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
         We cut through marketing hype with side-by-side stability tests, motor decibel ratings, and long-term ergonomic consensus for remote professionals.
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 pt-2">
         <a href="/compare" class="btn-affiliate">
-          <span>Explore Head-to-Head Comparisons</span>
+          <span>Explore Versus Matrix</span>
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
         </a>
         <a href="/reviews" class="btn-secondary">
-          Browse Standing Desk Reviews
+          <span>Browse Lab Reviews</span>
+        </a>
+        <a href="/coupons" class="btn-secondary">
+          <span>Active Promo Codes</span>
         </a>
       </div>
 
-      <!-- Trust stats -->
-      <div class="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-slate-200/80 text-left">
-        <div class="p-3">
-          <div class="text-2xl font-extrabold text-slate-900">45+ In</div>
-          <div class="text-xs text-slate-500 font-medium">Wobble Tested Elevation</div>
-        </div>
-        <div class="p-3">
-          <div class="text-2xl font-extrabold text-slate-900">&lt; 48 dB</div>
-          <div class="text-xs text-slate-500 font-medium">Strict Noise Benchmarks</div>
-        </div>
-        <div class="p-3">
-          <div class="text-2xl font-extrabold text-slate-900">15 Years</div>
-          <div class="text-xs text-slate-500 font-medium">Warranty Verification</div>
-        </div>
-        <div class="p-3">
-          <div class="text-2xl font-extrabold text-slate-900">Zero Fluff</div>
-          <div class="text-xs text-slate-500 font-medium">FTC Compliant & Direct</div>
+      <!-- Trust Metrics Bar -->
+      <div class="pt-10 max-w-4xl mx-auto">
+        <div class="rounded-2xl border border-slate-200/90 bg-white/90 backdrop-blur-md p-6 shadow-card grid grid-cols-2 md:grid-cols-4 gap-6 text-left ring-1 ring-black/[0.02]">
+          <div class="space-y-1">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">45 Inches</div>
+            <div class="text-xs text-slate-500 font-medium">Elevation Wobble Limit</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">&lt; 48 dB</div>
+            <div class="text-xs text-slate-500 font-medium">Motor Sound Benchmark</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">350+ lbs</div>
+            <div class="text-xs text-slate-500 font-medium">Dual-Motor Payload</div>
+          </div>
+          <div class="space-y-1">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">Zero Fluff</div>
+            <div class="text-xs text-slate-500 font-medium">100% Reader-Supported</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Comparisons (Versus Section) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="flex items-end justify-between mb-8">
+  <!-- 4 Core Pillars / Category Navigator -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="/reviews" class="group rounded-2xl border border-slate-200/90 bg-white p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5 transition-all">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/70 text-emerald-700 flex items-center justify-center font-bold text-lg group-hover:scale-105 transition-transform">
+            ⚡
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-950 group-hover:text-emerald-700 transition-colors">Standing Desks</h3>
+            <p class="text-xs text-slate-500">Dual-motor stability & frames</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/reviews" class="group rounded-2xl border border-slate-200/90 bg-white p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5 transition-all">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 flex items-center justify-center font-bold text-lg group-hover:scale-105 transition-transform">
+            💺
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-950 group-hover:text-emerald-700 transition-colors">Ergonomic Chairs</h3>
+            <p class="text-xs text-slate-500">Active lumbar & pelvic tilt</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/reviews" class="group rounded-2xl border border-slate-200/90 bg-white p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5 transition-all">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200/70 text-amber-700 flex items-center justify-center font-bold text-lg group-hover:scale-105 transition-transform">
+            🏃
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-950 group-hover:text-emerald-700 transition-colors">Walking Pads</h3>
+            <p class="text-xs text-slate-500">Under-desk steady cardio</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/reviews" class="group rounded-2xl border border-slate-200/90 bg-white p-5 shadow-subtle hover:shadow-card hover:-translate-y-0.5 transition-all">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200/70 text-indigo-700 flex items-center justify-center font-bold text-lg group-hover:scale-105 transition-transform">
+            🦾
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-950 group-hover:text-emerald-700 transition-colors">Monitor Arms</h3>
+            <p class="text-xs text-slate-500">Gas-spring cervical alignment</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Comparisons (Versus Matrix Section) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200/80 gap-4">
       <div>
-        <div class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Versus Matrix</div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Head-to-Head Showdowns</h2>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 mb-1">Versus Matrix</div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">Head-to-Head Hardware Showdowns</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Direct specification audits between closely matched models.</p>
       </div>
-      <a href="/compare" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors hidden sm:flex items-center gap-1">
-        <span>View all comparisons</span>
-        <span>→</span>
+      <a href="/compare" class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors inline-flex items-center gap-1.5 group shrink-0">
+        <span>View all {comparisons.length} showdowns</span>
+        <span class="transition-transform group-hover:translate-x-1">→</span>
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {comparisons.map((item) => (
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-card-hover transition-all space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      {comparisons.slice(0, 4).map((item) => (
+        <article class="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-card hover:shadow-card-hover transition-all duration-300 space-y-4 ring-1 ring-black/[0.02]">
           <div class="flex items-center justify-between text-xs">
-            <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold uppercase">
+            <span class="badge-winner">
               Winner: {item.data.winner}
             </span>
-            <span class="text-slate-400">{item.data.category}</span>
+            <span class="text-slate-400 font-semibold uppercase tracking-wider text-[11px]">{item.data.category}</span>
           </div>
 
-          <h3 class="text-xl font-extrabold text-slate-900 leading-snug">
-            <a href={`/compare/${item.id}`} class="hover:text-emerald-600 transition-colors">
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 leading-snug tracking-tight">
+            <a href={`/compare/${item.id}`} class="hover:text-emerald-700 transition-colors">
               {item.data.title}
             </a>
           </h3>
 
-          <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+          <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
             {item.data.description}
           </p>
 
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <div class="text-xs font-semibold text-slate-500">
-              {item.data.productA.name} <span class="text-slate-400">vs</span> {item.data.productB.name}
+              <span class="text-slate-900 font-bold">{item.data.productA.name}</span>
+              <span class="text-slate-400 mx-1">vs</span>
+              <span class="text-slate-900 font-bold">{item.data.productB.name}</span>
             </div>
-            <a href={`/compare/${item.id}`} class="text-xs font-bold text-slate-900 hover:text-emerald-600 inline-flex items-center gap-1">
-              Read Breakdown →
+            <a href={`/compare/${item.id}`} class="text-xs font-bold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1 group">
+              <span>Read Breakdown</span>
+              <span class="transition-transform group-hover:translate-x-0.5">→</span>
             </a>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </section>
 
-  <!-- Latest In-Depth Reviews -->
-  <section class="bg-slate-100/70 border-y border-slate-200/80 py-16">
+  <!-- Latest In-Depth Reviews Section -->
+  <section class="bg-[#f6f7fa] border-y border-slate-200/80 py-16 sm:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between mb-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
         <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Spec Evaluations</div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Recent Product Reviews</h2>
+          <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 mb-1">Hardware Testing Lab</div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">Recent Product Evaluations</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Stress-tested for frame wobble, motor sound, and ergonomic comfort.</p>
         </div>
-        <a href="/reviews" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors hidden sm:flex items-center gap-1">
-          <span>All reviews</span>
-          <span>→</span>
+        <a href="/reviews" class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors inline-flex items-center gap-1.5 group shrink-0">
+          <span>View all {reviews.length} reviews</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {reviews.map((rev) => (
-          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-card transition-all flex flex-col justify-between space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+        {reviews.slice(0, 6).map((rev) => (
+          <article class="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between space-y-4 ring-1 ring-black/[0.02]">
             <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">{rev.data.brand}</span>
-                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold uppercase tracking-wider text-slate-500">{rev.data.brand}</span>
+                <span class="font-extrabold text-amber-900 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-md">
                   ★ {rev.data.rating.toFixed(1)}
                 </span>
               </div>
-              <h3 class="text-lg font-bold text-slate-900 leading-snug">
-                <a href={`/reviews/${rev.id}`} class="hover:text-emerald-600 transition-colors">
+              
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-950 leading-snug tracking-tight">
+                <a href={`/reviews/${rev.id}`} class="hover:text-emerald-700 transition-colors">
                   {rev.data.productName}
                 </a>
               </h3>
+              
               <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                 {rev.data.verdict}
               </p>
@@ -141,89 +215,122 @@ const guides = await getCollection('guides');
 
             <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
               <div>
-                <span class="text-xs text-slate-400">Starting at</span>
-                <div class="text-lg font-extrabold text-slate-900">${rev.data.price.toFixed(2)}</div>
+                <span class="text-[11px] font-medium text-slate-400">Starting at</span>
+                <div class="text-lg font-extrabold text-slate-950">${rev.data.price.toFixed(2)}</div>
               </div>
               <a
                 href={`/reviews/${rev.id}`}
-                class="px-3.5 py-2 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-lg transition-colors"
+                class="px-4 py-2 text-xs font-bold text-white bg-slate-950 hover:bg-emerald-700 rounded-xl transition-all shadow-subtle hover:shadow-card hover:-translate-y-0.5"
               >
                 Read Review
               </a>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
   <!-- Editorial Testing Methodology & Standards (E-E-A-T Focus) -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="mb-10 text-center max-w-3xl mx-auto">
-      <div class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-2">Editorial Integrity</div>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">How We Evaluate Workstation Gear</h2>
-      <p class="text-sm text-slate-600 mt-2">
-        Every standing desk and ergonomic chair undergoes strict spec analysis, motor stress benchmarks, and real-world consensus verification before earning our recommendation.
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div class="mb-12 text-center max-w-3xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">
+        <span>Scientific Testing Protocol</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">How We Evaluate Workstation Gear</h2>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+        Every standing desk and ergonomic chair undergoes strict spec analysis, motor stress benchmarks, and community consensus auditing before earning our recommendation.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg">01</div>
-        <h3 class="text-lg font-bold text-slate-900">45-Inch Elevation Stability</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          We inspect leg column stages, crossbar reinforcement, and dual vs. single motor setups to gauge wobble tolerance during aggressive typing at standing height.
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <div class="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-card space-y-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center font-extrabold text-base shadow-subtle">01</div>
+        <h3 class="text-lg font-extrabold text-slate-950 tracking-tight">45-Inch Elevation Stability</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          We inspect leg column stages, crossbar reinforcement, and dual vs. single motor setups to gauge lateral wobble and front-to-back deflection during aggressive typing at standing height.
         </p>
       </div>
 
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg">02</div>
-        <h3 class="text-lg font-bold text-slate-900">Acoustic & Motor Benchmarks</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Decibel ratings under full 300+ lb payloads. We filter out noisy single-motor drives that disrupt quiet home office and studio recording environments.
+      <div class="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-card space-y-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center font-extrabold text-base shadow-subtle">02</div>
+        <h3 class="text-lg font-extrabold text-slate-950 tracking-tight">Acoustic & Motor Benchmarks</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          Decibel ratings under full 300+ lb payloads. We filter out noisy single-motor drives that disrupt quiet home office, studio recording, and focused work environments.
         </p>
       </div>
 
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg">03</div>
-        <h3 class="text-lg font-bold text-slate-900">Community Consensus Auditing</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          We cross-reference long-term reliability reports across r/StandingDesk and r/OfficeChairs to expose motor burnout rates, tabletop warping, and real warranty fulfillment.
+      <div class="rounded-2xl border border-slate-200/90 bg-white p-7 shadow-card space-y-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center font-extrabold text-base shadow-subtle">03</div>
+        <h3 class="text-lg font-extrabold text-slate-950 tracking-tight">Community Consensus Auditing</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          We cross-reference long-term reliability reports across r/StandingDesk and r/OfficeChairs to expose motor burnout rates, tabletop warping, and genuine manufacturer warranty fulfillment.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Ergonomic Guides & Insights -->
-  <section class="bg-slate-100/70 border-t border-slate-200/80 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between mb-8">
-        <div>
-          <div class="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Knowledge Base</div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Ergonomic Buying Guides</h2>
+  <!-- Verified Promo Codes Callout Banner -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="rounded-2xl bg-slate-950 border border-slate-800 text-white p-8 sm:p-10 shadow-elevated relative overflow-hidden">
+      <div class="absolute right-0 top-0 w-96 h-full bg-gradient-to-l from-emerald-500/10 to-transparent pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <span>Verified Savings</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Active Brand Promo Codes & Exclusive Discounts
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Save up to 15% directly on official store checkouts for FlexiSpot, Uplift, Secretlab, Herman Miller, Autonomous, and Hinomi.
+          </p>
         </div>
-        <a href="/guides" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors hidden sm:flex items-center gap-1">
-          <span>All guides</span>
-          <span>→</span>
+
+        <a
+          href="/coupons"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 rounded-xl transition-all shadow-subtle hover:shadow-card hover:-translate-y-0.5 shrink-0"
+        >
+          <span>View Verified Codes ({coupons.length})</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
         </a>
       </div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {guides.map((g) => (
-          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-card transition-all space-y-3">
-            <span class="text-xs font-bold uppercase text-emerald-600">{g.data.category}</span>
-            <h3 class="text-xl font-bold text-slate-900">
-              <a href={`/guides/${g.id}`} class="hover:text-emerald-600 transition-colors">
-                {g.data.title}
-              </a>
-            </h3>
-            <p class="text-sm text-slate-600 line-clamp-2">{g.data.description}</p>
-            <div class="pt-2 text-xs font-semibold text-slate-500">
-              By {g.data.author}
-            </div>
-          </article>
-        ))}
+  <!-- Ergonomic Guides & Insights -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200/80 gap-4">
+      <div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 mb-1">Biomechanics & Geometry</div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">Ergonomic Knowledge Base</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Calculations, posture checklists, and workstation guides.</p>
       </div>
+      <a href="/guides" class="text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 transition-colors inline-flex items-center gap-1.5 group shrink-0">
+        <span>View all {guides.length} guides</span>
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      {guides.slice(0, 4).map((g) => (
+        <article class="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-card hover:shadow-card-hover transition-all duration-300 space-y-3 ring-1 ring-black/[0.02]">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">{g.data.category}</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-950 tracking-tight leading-snug">
+            <a href={`/guides/${g.id}`} class="hover:text-emerald-700 transition-colors">
+              {g.data.title}
+            </a>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">{g.data.description}</p>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-medium">By {g.data.author}</span>
+            <a href={`/guides/${g.id}`} class="font-bold text-emerald-800 hover:text-emerald-950 inline-flex items-center gap-1 group">
+              <span>Read Guide</span>
+              <span class="transition-transform group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

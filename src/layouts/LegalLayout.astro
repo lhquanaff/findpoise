@@ -14,13 +14,17 @@ const { title, description } = Astro.props;
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <Breadcrumbs items={[{ name: title, url: Astro.url.pathname }]} />
     
-    <header class="my-6 border-b border-slate-200 pb-6">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">{title}</h1>
-      <p class="text-sm text-slate-500 mt-2">Last updated: September 2026</p>
+    <header class="my-8 border-b border-slate-200/80 pb-6 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">
+        <span>Editorial Policy</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">{title}</h1>
+      <p class="text-xs text-slate-500 font-medium">Last audited & verified: September 2026</p>
     </header>
 
-    <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-a:text-emerald-600">
+    <div class="prose prose-slate prose-lg max-w-none my-8 prose-headings:font-extrabold prose-headings:text-slate-950 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-emerald-700 prose-a:font-semibold prose-a:underline hover:prose-a:text-emerald-800">
       <slot />
     </div>
   </div>
 </BaseLayout>
+

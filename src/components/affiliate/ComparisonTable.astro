@@ -19,52 +19,64 @@ export interface Props {
 const { productA, productB, criteriaKeys } = Astro.props;
 ---
 
-<div class="my-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
+<div class="my-10 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-card ring-1 ring-black/[0.02]">
+  <div class="p-4 sm:p-5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+      <h3 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">Side-by-Side Technical Matrix</h3>
+    </div>
+    <span class="text-[11px] font-semibold text-slate-500 hidden sm:inline">Scroll horizontally for full comparison →</span>
+  </div>
+
   <div class="overflow-x-auto">
-    <table class="w-full text-left border-collapse">
+    <table class="w-full text-left border-collapse min-w-[600px]">
       <!-- Head -->
       <thead>
-        <tr class="border-b border-slate-200 bg-slate-50/70">
-          <th class="p-4 sm:p-5 text-xs font-bold uppercase tracking-wider text-slate-500 w-1/3">
-            Specifications & Features
+        <tr class="border-b border-slate-200 bg-white">
+          <th class="p-5 text-xs font-bold uppercase tracking-wider text-slate-400 w-1/3 align-bottom">
+            Hardware Metrics
           </th>
-          <th class="p-4 sm:p-5 w-1/3 border-l border-slate-200 bg-white">
+          
+          <!-- Product A Header -->
+          <th class="p-5 w-1/3 border-l border-slate-200/90 bg-slate-50/40 align-top">
             <div class="space-y-2">
               {productA.badge && (
-                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-600 text-white rounded-md">
+                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-md">
                   {productA.badge}
                 </span>
               )}
-              <div class="font-extrabold text-base sm:text-lg text-slate-900">{productA.name}</div>
-              <div class="text-xs font-semibold text-slate-500">{productA.brand}</div>
-              <div class="text-xl font-extrabold text-slate-900">${productA.price.toFixed(2)}</div>
+              <div class="font-extrabold text-base sm:text-lg text-slate-950 tracking-tight leading-snug">{productA.name}</div>
+              <div class="text-xs uppercase font-semibold tracking-wider text-slate-500">{productA.brand}</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-slate-950 pt-1">${productA.price.toFixed(2)}</div>
               <a
                 href={productA.affiliateUrl}
                 target="_blank"
                 rel="nofollow noopener sponsored"
-                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-lg transition-colors shadow-sm"
+                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-700 rounded-xl transition-all shadow-subtle hover:shadow-card hover:-translate-y-0.5 active:translate-y-0"
               >
-                Check Price
+                Check {productA.brand} Price
               </a>
             </div>
           </th>
-          <th class="p-4 sm:p-5 w-1/3 border-l border-slate-200 bg-white">
+
+          <!-- Product B Header -->
+          <th class="p-5 w-1/3 border-l border-slate-200/90 bg-slate-50/40 align-top">
             <div class="space-y-2">
               {productB.badge && (
-                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-indigo-600 text-white rounded-md">
+                <span class="inline-block px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-300 rounded-md">
                   {productB.badge}
                 </span>
               )}
-              <div class="font-extrabold text-base sm:text-lg text-slate-900">{productB.name}</div>
-              <div class="text-xs font-semibold text-slate-500">{productB.brand}</div>
-              <div class="text-xl font-extrabold text-slate-900">${productB.price.toFixed(2)}</div>
+              <div class="font-extrabold text-base sm:text-lg text-slate-950 tracking-tight leading-snug">{productB.name}</div>
+              <div class="text-xs uppercase font-semibold tracking-wider text-slate-500">{productB.brand}</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-slate-950 pt-1">${productB.price.toFixed(2)}</div>
               <a
                 href={productB.affiliateUrl}
                 target="_blank"
                 rel="nofollow noopener sponsored"
-                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-600 rounded-lg transition-colors shadow-sm"
+                class="inline-flex w-full items-center justify-center px-4 py-2.5 text-xs font-bold text-white bg-slate-900 hover:bg-emerald-700 rounded-xl transition-all shadow-subtle hover:shadow-card hover:-translate-y-0.5 active:translate-y-0"
               >
-                Check Price
+                Check {productB.brand} Price
               </a>
             </div>
           </th>
@@ -74,14 +86,14 @@ const { productA, productB, criteriaKeys } = Astro.props;
       <!-- Body -->
       <tbody class="divide-y divide-slate-100 text-sm">
         {criteriaKeys.map((key, idx) => (
-          <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/40'}>
-            <td class="p-4 font-semibold text-slate-700 text-xs sm:text-sm">
+          <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/30'}>
+            <td class="p-4 sm:p-5 font-semibold text-slate-900 text-xs sm:text-sm">
               {key}
             </td>
-            <td class="p-4 border-l border-slate-100 text-slate-800 text-xs sm:text-sm">
+            <td class="p-4 sm:p-5 border-l border-slate-100 text-slate-700 text-xs sm:text-sm font-medium">
               {productA.specs[key] || '—'}
             </td>
-            <td class="p-4 border-l border-slate-100 text-slate-800 text-xs sm:text-sm">
+            <td class="p-4 sm:p-5 border-l border-slate-100 text-slate-700 text-xs sm:text-sm font-medium">
               {productB.specs[key] || '—'}
             </td>
           </tr>
@@ -90,3 +102,4 @@ const { productA, productB, criteriaKeys } = Astro.props;
     </table>
   </div>
 </div>
+

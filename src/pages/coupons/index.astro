@@ -8,23 +8,26 @@ const coupons = await getCollection('coupons');
 ---
 
 <BaseLayout
-  title="Verified Standing Desk & Office Furniture Coupons"
-  description="Exclusive promo codes and discount vouchers for FlexiSpot, Uplift, Secretlab, Branch, and more. Tested daily."
+  title="Verified Standing Desk & Ergonomic Chair Promo Codes | FindPoise"
+  description="Exclusive promo codes and discount vouchers for FlexiSpot, Uplift, Secretlab, Branch, Herman Miller, and Hinomi. Tested daily."
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-    <Breadcrumbs items={[{ name: 'Coupons & Deals', url: '/coupons' }]} />
+    <Breadcrumbs items={[{ name: 'Deals & Coupons', url: '/coupons' }]} />
 
-    <header class="my-6 max-w-3xl space-y-3">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-        <span>Verified Savings</span>
+    <header class="my-8 max-w-3xl space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300/80 text-xs font-bold tracking-wider uppercase shadow-subtle">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+        <span>Verified Manufacturer Savings</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Active Brand Promo Codes</h1>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-        Save money directly on the manufacturer's official store. Click any deal to reveal the code and launch checkout.
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">
+        Active Brand Promo Codes
+      </h1>
+      <p class="text-base sm:text-xl text-slate-600 leading-relaxed font-normal">
+        Save money directly on the manufacturer's official storefront. Click any deal to copy the verified promo code and launch checkout in a new window.
       </p>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 my-10">
       {coupons.map((c) => (
         <RevealCodeModal
           brandName={c.data.brand}
