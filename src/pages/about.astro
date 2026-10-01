@@ -1,0 +1,136 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+
+const pageTitle = "About FindPoise | Spec-Driven Workstation Ergonomics";
+const pageDescription = "FindPoise is an independent ergonomics research publication. We stress-test standing desks, ergonomic office chairs, and desk setups with zero sponsored bias.";
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'FindPoise',
+    url: 'https://findpoise.com',
+    logo: 'https://findpoise.com/favicon.svg',
+    description: pageDescription,
+    foundingDate: '2026',
+    knowsAbout: [
+      'Standing Desks',
+      'Ergonomic Office Chairs',
+      'Under-desk Treadmills',
+      'Monitor Arms',
+      'Workstation Biomechanics'
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'editor@findpoise.com',
+      contactType: 'editorial support'
+    }
+  }
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <JsonLd data={organizationSchema} />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs items={[{ name: 'About Us', url: '/about' }]} />
+
+    <header class="my-8 border-b border-slate-200 pb-8 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200/60">
+        <span>Editorial Independence & Mission</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">
+        Elevate Your Work. Find Your Poise.
+      </h1>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+        We cut through generic marketing hype to provide verifiable hardware benchmarks, motor wobble measurements, and real-world community sentiment for modern remote professionals.
+      </p>
+    </header>
+
+    <div class="space-y-12 text-slate-700 leading-relaxed text-base sm:text-lg">
+      <!-- Section: Why We Exist -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Why FindPoise Exists</h2>
+        <p>
+          The ergonomic office furniture market is filled with affiliate sites copying boilerplate manufacturer specs. You have likely encountered identical "reviews" declaring ten different \$300 standing desks as the <em>"best overall desk of 2026."</em>
+        </p>
+        <p>
+          <strong>FindPoise was built on a simple premise:</strong> Ergonomics is an engineering discipline, not a marketing buzzword. Whether you are dealing with chronic lower back strain, carpal tunnel numbness, or neck stiffness from 10-hour coding marathons, you need hard data—not affiliate fluff.
+        </p>
+      </section>
+
+      <!-- Section: The Poise Testing Protocol -->
+      <section class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-soft space-y-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Methodology</span>
+          <h2 class="text-2xl font-extrabold text-slate-950 mt-1">The Poise Testing Protocol</h2>
+          <p class="text-sm text-slate-500 mt-1">Every workstation component we evaluate is subjected to 4 empirical testing pillars:</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold text-sm">01</div>
+            <h3 class="font-bold text-slate-900 text-base">Wobble & Deflection at 45 Inches</h3>
+            <p class="text-sm text-slate-600">
+              Desks that feel rock-solid at sitting height (28") often shake violently when raised to standing height. We measure lateral and front-to-back deflection under a standardized 50 lb dual-monitor payload.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold text-sm">02</div>
+            <h3 class="font-bold text-slate-900 text-base">Motor Acoustics & Sound Pitch (dB)</h3>
+            <p class="text-sm text-slate-600">
+              A dual-motor desk claiming "under 50 dB" can produce high-pitched whining that interrupts Zoom meetings. We record decibels and pitch frequencies at standard sitting distance (1 meter).
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold text-sm">03</div>
+            <h3 class="font-bold text-slate-900 text-base">Continuous Duty Cycle & Payload</h3>
+            <p class="text-sm text-slate-600">
+              We verify manufacturer lifting capacity claims against real setups (triple monitors, studio audio gear, PC towers) and monitor anti-collision sensitivity thresholds.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200/70 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold text-sm">04</div>
+            <h3 class="font-bold text-slate-900 text-base">Reddit Community Longitudinal Audit</h3>
+            <p class="text-sm text-slate-600">
+              A chair or desk might feel impressive on day 3 but develop structural squeaks or gas cylinder sinking at month 14. We synthesize hundreds of long-term owner threads on Reddit (r/StandingDesk, r/OfficeChairs).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Editorial Independence -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Zero Sponsored Rankings (Our Promise)</h2>
+        <p>
+          We do <strong>not</strong> accept paid sponsorships to guarantee positive reviews or higher rankings. If a premium \$1,400 ergonomic chair has a design flaw in its lumbar curve, we state it explicitly in our Damaging Admissions section.
+        </p>
+        <p>
+          FindPoise is funded through transparent affiliate partnerships. When you click through our links to authorized retailers (such as FlexiSpot, Uplift Desk, Secretlab, Herman Miller, or Amazon) and complete a purchase, we may receive a referral commission at zero extra cost to you. Read our full <a href="/affiliate-disclosure" class="text-emerald-700 underline font-medium hover:text-emerald-800">Affiliate Disclosure</a> and our <a href="/editorial-policy" class="text-emerald-700 underline font-medium hover:text-emerald-800">Editorial Policy</a>.
+        </p>
+      </section>
+
+      <!-- Section: Contact & Inquiries -->
+      <section class="p-6 rounded-2xl bg-emerald-950 text-white space-y-4">
+        <h3 class="text-xl font-bold text-white">Have a Setup Question or Product to Suggest?</h3>
+        <p class="text-emerald-100/90 text-sm leading-relaxed">
+          Our editorial team reviews community inquiries and workstation setup challenges weekly. For editorial corrections, teardown suggestions, or feedback:
+        </p>
+        <div>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-emerald-950 font-bold text-sm hover:bg-emerald-50 transition-colors shadow-sm"
+          >
+            Contact Editorial Team &rarr;
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
