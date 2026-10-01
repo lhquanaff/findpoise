@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
+# Allow AI Search & Citations Engines (GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Sitemaps & LLM Context
 Sitemap: https://findpoise.com/sitemap-index.xml
+# LLM Knowledge standard: https://findpoise.com/llms.txt

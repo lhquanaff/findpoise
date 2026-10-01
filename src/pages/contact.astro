@@ -1,0 +1,102 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/common/Breadcrumbs.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+
+const pageTitle = "Contact FindPoise | Editorial Desk & Inquiries";
+const pageDescription = "Contact FindPoise editorial desk for workstation hardware feedback, spec corrections, testing inquiries, and commercial partnerships.";
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: pageTitle,
+  description: pageDescription,
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'FindPoise',
+    url: 'https://findpoise.com',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        email: 'editor@findpoise.com',
+        contactType: 'Editorial & Hardware Inquiries',
+        availableLanguage: ['English']
+      },
+      {
+        '@type': 'ContactPoint',
+        email: 'partnerships@findpoise.com',
+        contactType: 'Affiliate & Business Partnerships',
+        availableLanguage: ['English']
+      }
+    ]
+  }
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <JsonLd data={contactSchema} />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <Breadcrumbs items={[{ name: 'Contact', url: '/contact' }]} />
+
+    <header class="my-8 border-b border-slate-200 pb-8 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200/60">
+        <span>Direct Communication</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight leading-[1.1]">
+        Contact the FindPoise Desk
+      </h1>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+        Have a hardware specification correction, an ergonomic setup dilemma, or feedback on a reviewed desk? We read and reply to every message.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+      <!-- Contact Card 1 -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-soft space-y-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-900">Editorial & Corrections</h2>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          Found an outdated lifting payload, modified warranty policy, or a broken coupon code? Let our editorial team know so we can inspect and update our benchmarks.
+        </p>
+        <div class="pt-2">
+          <a
+            href="mailto:editor@findpoise.com"
+            class="text-emerald-700 font-bold text-base hover:text-emerald-800 underline underline-offset-4"
+          >
+            editor@findpoise.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Card 2 -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-soft space-y-4">
+        <div class="w-10 h-10 rounded-xl bg-slate-900/10 text-slate-900 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-900">Partnerships & D2C Brands</h2>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          For ergonomic furniture manufacturers, Impact/ShareASale affiliate managers, and product review sample coordination. Note: We strictly reject paid positive coverage.
+        </p>
+        <div class="pt-2">
+          <a
+            href="mailto:partnerships@findpoise.com"
+            class="text-slate-900 font-bold text-base hover:text-emerald-700 underline underline-offset-4"
+          >
+            partnerships@findpoise.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Response Commitment -->
+    <div class="p-6 rounded-2xl bg-slate-100 border border-slate-200/80 text-sm text-slate-700 space-y-2">
+      <h3 class="font-bold text-slate-900">Response Turnaround Commitment</h3>
+      <p>
+        Our editorial desk operates Monday through Friday. We strive to address verified specification corrections and reader inquiries within <strong>24 to 48 business hours</strong>.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

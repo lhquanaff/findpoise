@@ -1,0 +1,91 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+
+const pageTitle = "Editorial Policy & Testing Standards";
+const pageDescription = "FindPoise editorial policy and testing methodology: How we research, benchmark, and evaluate workstation ergonomics independently.";
+
+const editorialSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  description: pageDescription,
+  publisher: {
+    '@type': 'Organization',
+    name: 'FindPoise',
+    url: 'https://findpoise.com'
+  }
+};
+---
+
+<LegalLayout title={pageTitle} description={pageDescription}>
+  <JsonLd data={editorialSchema} />
+
+  <p class="lead text-lg text-slate-700">
+    At <strong>FindPoise</strong>, our highest commitment is to the posture, comfort, and financial investment of our readers. This document outlines the rigorous standards, ethical guidelines, and testing protocols that govern every review, head-to-head comparison, and buying guide published on our platform.
+  </p>
+
+  <h2>1. Core Editorial Principles</h2>
+  <ul>
+    <li>
+      <strong>Zero Sponsored Rankings:</strong> Manufacturers cannot pay for higher placement in our comparison tables, recommendation badges, or review verdicts. Our top picks are determined exclusively through empirical specs, stress testing, and real-world owner consensus.
+    </li>
+    <li>
+      <strong>Mandatory Damaging Admissions:</strong> No ergonomic product is perfect for everyone. Every review and comparison published on FindPoise is required to highlight real-world drawbacks, limitations, and specific user profiles for whom the product is <em>not</em> recommended (e.g., users under 5'4", multi-monitor setups over 65 lbs).
+    </li>
+    <li>
+      <strong>Fact-Checked Specifications:</strong> We do not rely on promotional marketing brochures. We cross-verify lifting capacities, noise decibels, warranty conditions (frame vs. motor vs. electronics), and anti-collision responsiveness against real user teardowns and physical measurements.
+    </li>
+  </ul>
+
+  <h2>2. The Spec-Driven Benchmark Framework</h2>
+  <p>
+    When assessing standing desks, ergonomic task chairs, monitor arms, and walking pads, we score products across standardized performance parameters:
+  </p>
+  <ul>
+    <li>
+      <strong>Stability & Deflection Index:</strong> Measured in millimeters of lateral shake and fore-and-aft wobble at 28 inches (sitting) and 45 inches (standing).
+    </li>
+    <li>
+      <strong>Acoustic Profile:</strong> Noise levels recorded during motorized height transitions using decibel (dB) meters placed 1 meter from the drive mechanism.
+    </li>
+    <li>
+      <strong>Long-Term Reddit Consensus:</strong> We continuously monitor enthusiast communities—primarily <code>r/StandingDesk</code>, <code>r/OfficeChairs</code>, and <code>r/Ergonomics</code>—to identify recurring component failures (such as faulty control boxes, squeaking cylinder bushings, or mesh sagging) that only emerge after 6–24 months of heavy daily use.
+    </li>
+  </ul>
+
+  <h2>3. Affiliate Partnerships & Commercial Transparency</h2>
+  <p>
+    To maintain free, open-access research for our global audience without deploying intrusive paywalls or popup ads, FindPoise monetizes via affiliate marketing programs (including Impact.com, ShareASale, CJ, and the Amazon Services LLC Associates Program).
+  </p>
+  <ul>
+    <li>
+      When you click an outbound link and make a purchase on a retailer’s website, FindPoise may earn a referral fee.
+    </li>
+    <li>
+      This referral fee comes at <strong>no additional expense to you</strong>; in fact, we actively partner with retailers to secure verified discount codes for our readers.
+    </li>
+    <li>
+      All commercial links comply strictly with search engine guidelines and FTC regulations, employing <code>rel="sponsored nofollow"</code> attributes.
+    </li>
+    <li>
+      Our editorial decisions are made independently of merchant commission rates. A desk offering a 12% commission will never be ranked above a superior product offering a 3% commission.
+    </li>
+  </ul>
+
+  <h2>4. Updates, Re-Testing & Corrections</h2>
+  <p>
+    Ergonomic hardware evolves. Manufacturers frequently issue revised motor control boxes, improved crossbeams, or altered warranty policies without changing product names.
+  </p>
+  <ul>
+    <li>
+      Every article features a transparent <em>Last Audited & Verified</em> timestamp.
+    </li>
+    <li>
+      If a manufacturer modifies key hardware components or if extended community usage reveals emerging defects, we promptly update our ratings and verdicts.
+    </li>
+    <li>
+      If you detect an inaccurate hardware specification or wish to report a persistent defect with a reviewed model, contact our editorial desk at <a href="mailto:editor@findpoise.com">editor@findpoise.com</a>.
+    </li>
+  </ul>
+</LegalLayout>

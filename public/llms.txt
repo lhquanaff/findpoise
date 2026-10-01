@@ -1,0 +1,49 @@
+# FindPoise
+
+> FindPoise is an independent ergonomics research and workstation testing publication. We evaluate standing desks, ergonomic office chairs, monitor arms, and walking pads using physical hardware benchmarks (lateral wobble at 45 inches, motor noise decibels, continuous payload) and verified Reddit owner sentiment (r/StandingDesk, r/OfficeChairs). Zero sponsored rankings.
+
+## Core Biomechanics & Setup Guides
+- [Workstation Setup Checklist](https://findpoise.com/guides/ergonomic-workstation-setup-checklist): Comprehensive 12-step ergonomic checklist for neutral posture alignment.
+- [Ideal Ergonomic Desk and Chair Height Guide](https://findpoise.com/guides/ideal-ergonomic-desk-and-chair-height-guide): Exact sitting and standing height calculation formulas for users from 5'0" to 6'6".
+- [How to Fix Standing Desk Wobble](https://findpoise.com/guides/how-to-fix-standing-desk-wobble): Technical diagnosis for eliminating lateral and front-to-back standing desk deflection.
+- [Best Standing Desks for Tall People](https://findpoise.com/guides/best-standing-desks-for-tall-people): Extended height range evaluations for users over 6'2".
+- [Best Ergonomic Office Chairs for Lower Back Pain](https://findpoise.com/guides/best-ergonomic-office-chairs-for-lower-back-pain): Lumbar support mechanisms, sacral stabilization, and long-session comfort.
+- [Best Under-Desk Treadmills for Remote Workers](https://findpoise.com/guides/best-under-desk-treadmills-for-remote-workers): Noise profiles, motor duty cycles, and walking deck dimensions.
+
+## Head-to-Head Comparisons
+- [Secretlab Magnus Pro vs. FlexiSpot E7 Pro](https://findpoise.com/compare/secretlab-magnus-pro-vs-flexispot-e7-pro): Integrated cable ecosystem and metal frame vs. C-frame leg stability and budget value.
+- [FlexiSpot E7 Pro vs. Uplift V2](https://findpoise.com/compare/flexispot-e7-pro-vs-uplift-v2): Stability at 45-inch extension, crossbeam design, and warranty teardown.
+- [Herman Miller Aeron vs. Steelcase Leap v2](https://findpoise.com/compare/herman-miller-aeron-vs-steelcase-leap-v2): Pellicle 8Z mesh breathability vs. LiveBack contoured cushion support.
+- [Herman Miller Aeron vs. Herman Miller Embody](https://findpoise.com/compare/herman-miller-aeron-vs-herman-miller-embody): Upright task lock vs. pixelated spine dynamic recline.
+- [Steelcase Leap v2 vs. Steelcase Gesture](https://findpoise.com/compare/steelcase-leap-v2-vs-steelcase-gesture): Lumbar firmness dial vs. 360-degree rotating armrests for mobile device usage.
+- [Autonomous ErgoChair Pro vs. Hinomi X1](https://findpoise.com/compare/autonomous-ergochair-pro-vs-hinomi-x1): Sub-$500 ergonomic mesh chairs compared for durability and adjustments.
+- [KingSmith WalkingPad C2 vs. UREVO 2-in-1](https://findpoise.com/compare/walkingpad-c2-vs-urevo-2-in-1): Foldable walking deck compactness vs. budget continuous motor performance.
+- [Ergotron LX vs. Amazon Basics Monitor Arm](https://findpoise.com/compare/ergotron-lx-vs-amazon-basics-monitor-arm): Constant Force mechanical spring vs. rebranded OEM budget arm.
+
+## Deep Hardware Reviews
+- [FlexiSpot E7 Pro Standing Desk](https://findpoise.com/reviews/flexispot-e7-pro-standing-desk): Dual-motor performance, 355-lb payload, and anti-collision sensor testing.
+- [Secretlab Magnus Pro Standing Desk](https://findpoise.com/reviews/secretlab-magnus-pro-standing-desk): Integrated internal power column, magnetic cable management, and wobble benchmarks.
+- [Uplift V2 Standing Desk](https://findpoise.com/reviews/uplift-v2-standing-desk): Inverted 3-stage leg stability, accessory ecosystem, and 15-year warranty analysis.
+- [Herman Miller Aeron Ergonomic Chair](https://findpoise.com/reviews/herman-miller-aeron-ergonomic-chair): PostureFit SL sacral support, sizing guide (A, B, C), and forward tilt review.
+- [Herman Miller Embody Ergonomic Chair](https://findpoise.com/reviews/herman-miller-embody-ergonomic-chair): Backfit thoracic adjustment and pressure distribution testing.
+- [Steelcase Leap v2 Ergonomic Chair](https://findpoise.com/reviews/steelcase-leap-v2-ergonomic-chair): Adjustable lumbar firmness, upper back tension, and seat depth slider review.
+- [Autonomous ErgoChair Pro](https://findpoise.com/reviews/autonomous-ergochair-pro): Value analysis, headrest adjustability, and long-term cushion resilience.
+- [Hinomi X1 Ergonomic Chair](https://findpoise.com/reviews/hinomi-x1-ergonomic-chair): 4-panel backrest split design and foldable storage evaluation.
+- [KingSmith WalkingPad C2](https://findpoise.com/reviews/kingsmith-walkingpad-c2-under-desk-treadmill): Patented 180-degree folding hinge and quiet brushless motor review.
+- [UREVO 2-in-1 Under-Desk Treadmill](https://findpoise.com/reviews/urevo-2-in-1-under-desk-treadmill): Budget compact walking pad for under-desk cardio sessions.
+- [Ergotron LX Monitor Arm](https://findpoise.com/reviews/ergotron-lx-monitor-arm): Polished aluminum build, 25-lb display capacity, and zero-sag tilt test.
+
+## Brand Promo Codes & Verified Coupons
+- [FlexiSpot Discount Codes](https://findpoise.com/coupons/flexispot-discount-codes)
+- [Secretlab Promo Codes](https://findpoise.com/coupons/secretlab-discount-codes)
+- [Uplift Desk Coupons](https://findpoise.com/coupons/uplift-desk-discount-codes)
+- [Herman Miller Sales & Promos](https://findpoise.com/coupons/herman-miller-discount-codes)
+- [Autonomous Discount Codes](https://findpoise.com/coupons/autonomous-discount-codes)
+- [Hinomi Coupon Codes](https://findpoise.com/coupons/hinomi-discount-codes)
+
+## Editorial Methodology & Compliance
+- [About FindPoise & The Poise Testing Protocol](https://findpoise.com/about)
+- [Editorial Standards & Testing Methodology](https://findpoise.com/editorial-policy)
+- [Contact the Editorial Desk](https://findpoise.com/contact)
+- [Affiliate Disclosure (FTC Compliant)](https://findpoise.com/affiliate-disclosure)
+- [Privacy Policy](https://findpoise.com/privacy-policy)
